@@ -1,0 +1,123 @@
+<!--santhosh mudavath-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #todo-container {
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #todo-header {
+            background-color: rgb(65, 123, 205);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .todo-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .add-todo {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-todo input[type="text"] {
+            flex: 1;
+            padding: 8px;
+        }
+
+        .add-todo button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        
+     h1{
+        
+        margin-bottom: 30%;
+        color: #070707;
+        font-family: 'Courier New', Courier, monospace;
+    }
+        
+    </style>
+</head>
+<body>
+<h1>MUDAVATH SANTHOSH</h1>
+<div id="todo-container">
+    <div id="todo-header">
+        <h2>To-Do App</h2>
+    </div>
+    <ul id="todo-list"></ul>
+    <div class="add-todo">
+        <input type="text" id="newTodo" placeholder="Add a new task">
+        <button onclick="addTodo()">Add</button>
+    </div>
+</div>
+
+<script>
+    function addTodo() {
+        var todoInput = document.getElementById("newTodo");
+        var todoText = todoInput.value.trim();
+
+        if (todoText !== "") {
+            var todoList = document.getElementById("todo-list");
+            var newTodoItem = document.createElement("li");
+            newTodoItem.className = "todo-item";
+            newTodoItem.innerHTML = `
+                <input type="checkbox">
+                <span>${todoText}</span>
+                <button onclick="removeTodo(this)">Remove</button>
+            `;
+            todoList.appendChild(newTodoItem);
+
+            // Clear the input field
+            todoInput.value = "";
+        }
+    }
+
+    function removeTodo(button) {
+        var todoItem = button.parentElement;
+        todoItem.remove();
+    }
+</script>
+
+</body>
+</html>
